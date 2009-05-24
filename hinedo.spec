@@ -1,7 +1,7 @@
 Name: hinedo
 Summary: Tray applet to listen Hinet radio
 Version: 0.4
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+
 Group: Sound
 Source: http://of.openfoundry.org/download_path/hinedo/2007.11.18/%name-%version.tar.bz2
@@ -31,9 +31,6 @@ rm -fr %{buildroot}
 
 desktop-file-install --vendor="" \
 	--remove-category="Application" \
-	--add-category="TrayIcon" \
-	--add-only-show-in="KDE" \
-	--add-only-show-in="GNOME" \
 	--dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*.desktop
 
 %if %mdkversion < 200900
