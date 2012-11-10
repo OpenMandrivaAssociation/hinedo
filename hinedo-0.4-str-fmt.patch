@@ -1,0 +1,11 @@
+--- hinedo.c.str	2009-05-23 08:32:40.000000000 +0200
++++ hinedo.c	2009-05-23 08:32:50.000000000 +0200
+@@ -36,7 +36,7 @@
+ {
+     GtkWidget* dlg;
+     dlg = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL,
+-                    GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, msg );
++                    GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, "%s", msg );
+     gtk_dialog_run( (GtkDialog*)dlg );
+     gtk_widget_destroy( dlg );
+ }

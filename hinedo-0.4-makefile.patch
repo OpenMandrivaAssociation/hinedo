@@ -1,0 +1,26 @@
+--- Makefile.orig	2009-05-23 08:27:37.000000000 +0200
++++ Makefile	2009-05-23 08:30:21.000000000 +0200
+@@ -6,19 +6,20 @@
+ PREFIX=$(DESTDIR)/usr
+ 
+ all: $(OBJS)
+-	cc -o hinedo $(GTK2_LIBS) $(OBJS)
++	cc -o hinedo $(CFLAGS) $(OBJS) $(LDFLAGS) $(GTK2_LIBS)
+ 
+ hinedo.o: hinedo.c
+-	cc -c -DPREFIX=\"$(PREFIX)\" -DVERSION=\"$(VER)\" $(GTK2_CFLAGS) hinedo.c >/dev/null 2>&1
++	cc -c -DPREFIX=\"$(PREFIX)\" -DVERSION=\"$(VER)\" $(CFLAGS) $(GTK2_CFLAGS) hinedo.c >/dev/null 2>&1
+ 
+ eggtrayicon.o: eggtrayicon.c eggtrayicon.h
+-	cc -c $(GTK2_CFLAGS) -DEGG_COMPILATION eggtrayicon.c
++	cc -c $(CFLAGS) $(GTK2_CFLAGS) -DEGG_COMPILATION eggtrayicon.c
+ 
+ clean:
+ 	rm -f hinedo
+ 	rm -f *.o
+ 
+ install: all
++	mkdir -p $(PREFIX)/bin
+ 	install -s hinedo $(PREFIX)/bin/hinedo
+ 	mkdir -p $(PREFIX)/lib/hinedo
+ 	mkdir -p $(PREFIX)/share/applications
