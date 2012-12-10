@@ -1,0 +1,11 @@
+--- hinedo-0.4/Makefile.nostrip	2012-11-06 14:48:35.441780150 +0400
++++ hinedo-0.4/Makefile	2012-11-06 14:50:07.451780215 +0400
+@@ -20,7 +20,7 @@ clean:
+ 
+ install: all
+ 	mkdir -p $(PREFIX)/bin
+-	install -s hinedo $(PREFIX)/bin/hinedo
++	install hinedo $(PREFIX)/bin/hinedo
+ 	mkdir -p $(PREFIX)/lib/hinedo
+ 	mkdir -p $(PREFIX)/share/applications
+ 	mkdir -p $(PREFIX)/share/pixmaps

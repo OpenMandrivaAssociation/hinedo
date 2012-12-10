@@ -1,15 +1,15 @@
 Name: hinedo
 Summary: Tray applet to listen Hinet radio
 Version: 0.4
-Release: %mkrel 2
+Release: 2
 License: GPLv2+
 Group: Sound
-Source: http://of.openfoundry.org/download_path/hinedo/2007.11.18/%name-%version.tar.bz2
+Source0: http://of.openfoundry.org/download_path/hinedo/2007.11.18/%name-%version.tar.bz2
 Patch0: hinedo-0.4-makefile.patch
 Patch1: hinedo-0.4-str-fmt.patch
+patch2:	hinedo-0.4.nostrip.patch
 URL: http://of.openfoundry.org/projects/814
-BuildRequires: gtk+2-devel desktop-file-utils
-BuildRoot: %{_tmppath}/%{name}-%{version}-build
+BuildRequires: pkgconfig(gtk+-2.0) desktop-file-utils
 Requires: mplayer
 Requires: python
 Obsoletes: hinetradio
@@ -21,27 +21,17 @@ Tray applet to listen Hinet radio.
 %setup -q -n %{name}-%{version}
 %patch0 -p0
 %patch1 -p0
+%patch2 -p1 -b .nostrip
 
 %build
-%make CFLAGS="%optflags" LDFLAGS="%{?ldflags}"
+%make CFLAGS="%optflags" LDFLAGS="%{?ldflags} -lX11"
 
 %install
-rm -fr %{buildroot}
-%makeinstall_std CFLAGS="%optflags" LDFLAGS="%{?ldflags}"
+%makeinstall_std CFLAGS="%optflags" LDFLAGS="%{?ldflags} -lX11"
 
 desktop-file-install --vendor="" \
 	--remove-category="Application" \
 	--dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*.desktop
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
 
 %files
 %defattr(-,root,root)
@@ -50,6 +40,15 @@ desktop-file-install --vendor="" \
 %{_datadir}/pixmaps/*.png
 %{_prefix}/lib/hinedo/update
 
-%clean
-rm -rf %{buildroot}
+
+
+%changelog
+* Sun May 24 2009 Funda Wang <fwang@mandriva.org> 0.4-2mdv2010.0
++ Revision: 379122
+- drop desktop environment
+
+* Sat May 23 2009 Funda Wang <fwang@mandriva.org> 0.4-1mdv2010.0
++ Revision: 378883
+- import hinedo
+
 
