@@ -1,7 +1,7 @@
 Name: hinedo
 Summary: Tray applet to listen Hinet radio
 Version: 0.4
-Release: 2
+Release: 3
 License: GPLv2+
 Group: Sound
 Source0: http://of.openfoundry.org/download_path/hinedo/2007.11.18/%name-%version.tar.bz2
