@@ -8,7 +8,7 @@ Source0: http://of.openfoundry.org/download_path/hinedo/2007.11.18/%name-%versio
 Patch0: hinedo-0.4-makefile.patch
 Patch1: hinedo-0.4-str-fmt.patch
 patch2:	hinedo-0.4.nostrip.patch
-URL: http://of.openfoundry.org/projects/814
+URL: https://of.openfoundry.org/projects/814
 BuildRequires: pkgconfig(gtk+-2.0) desktop-file-utils
 Requires: mplayer
 Requires: python
